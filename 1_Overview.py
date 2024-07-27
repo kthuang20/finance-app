@@ -9,8 +9,10 @@ st.set_page_config(
 	)
 
 '''
-	# Finance App
-
+	# Finance App 💰
+	*Welcome to a personal finance app that provides insights into your spending and saving habits and 
+	investments. This app aims to help you understand your progress and guide you towards your financial goals.*
+	
 	### Inspiration
 	I have multiple accounts ranging from my checkings and savings to retirement accounts.
 	However, because they were located in various locations, keeping track of everything 
@@ -24,13 +26,17 @@ st.set_page_config(
 	download transactions and investments across all accounts that doesn't cost money.
 	Here are the following steps I performed on my laptop:
 	1. Link all your accounts (internal and external) in Fidelity.
-	2. Under the Accounts & Trade tab, click Full View
+	2. Under the Accounts & Trade tab, select *Full View*
 	3. To download all spending transactions, select *Spending → Transactions → Export Results*
 	4. To download all investment transactions, select *Investments → Transactions → Export Results*
 
 
-	### How It Works
-	
+	### How To Use 
+	I have designed this finance app to your analyze yearly spending transactions and investments separately.
+	Click on the sidebar to navigate to which analysis you would like to perform.
+
+	---
+	*Source code for this app is available at:* https://github.com/kthuang20/finance-app
 
 
 '''
