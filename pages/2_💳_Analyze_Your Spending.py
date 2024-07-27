@@ -30,7 +30,7 @@ if file is not None:
 # or use example file to create dashbaord
 elif yes_demo: 
 	## use sample transactions file from GitHub
-	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/transactions_2024_07_27.csv"
+	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv"
 	## read in as a dataframe
 	transactions = setup_data(url)
 
