@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-from plotly.subplots import make_subplots
 
 ### function to set up the data
 def setup_data(file):
