@@ -7,7 +7,6 @@ import sys
 sys.path.append("code/")
 from analyze_spending import setup_data, monthly_net_gain, visualize_spending, analyze_income, sum_stats
 
-
 ### add title on main page
 st.title("Your Finances At A Glance")
 st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files that are formatted like the \

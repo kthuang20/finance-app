@@ -26,7 +26,6 @@ def setup_data(file):
 
 	return transactions
 
-
 ### function to generate bar plot tracking expenses and income over time
 def monthly_net_gain(transactions):
 	## calculate monthly income
@@ -91,7 +90,6 @@ def visualize_spending(transactions, col):
 	col.plotly_chart(fig)
 
 	return spending
-
 
 ### function to generate composition of income
 def analyze_income(transactions, col):
