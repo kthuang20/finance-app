@@ -1,4 +1,6 @@
+### import necessary packages
 import pandas as pd
+import numpy as np
 import streamlit as st
 import plotly.express as px
 
@@ -100,3 +102,43 @@ def analyze_income(transactions, col):
 	fig = px.pie(income, values="Amount (in $)", names="Subcategory", title="Types of Income Earned")
 	col.plotly_chart(fig)
 	return income
+
+### function to show summary statistics
+def sum_stats(transactions, net_gain, spending, income):
+	## add section title
+	st.header("Summary Statistics")
+
+	## calculate total saved
+	total_earned = net_gain["Total Income"].sum()
+	total_spent = net_gain["Total Expenses"].sum()
+	total_saved = total_earned - total_spent
+	percent_earned = total_saved/total_earned * 100
+	## calculate how much you earned and spent on average
+	avg_amt_earned = net_gain["Total Income"].mean()
+	avg_amt_spent = net_gain["Total Expenses"].mean()
+
+	## calculate the average % expenses (excluding months where you spent more than you earned)
+	net_gain["% spent"] = net_gain["Total Expenses"]/net_gain["Total Income"] * 100
+	avg_percent_spent = net_gain.loc[np.isfinite(net_gain["% spent"]), "% spent"].mean()
+
+	## store the greatest source of spending and income
+	income_by_source = income.groupby("Subcategory")["Amount (in $)"].sum().reset_index()
+	top_income_source = income_by_source.sort_values("Amount (in $)", ascending=False).iloc[0, 0]
+
+	spending_by_cat = spending.groupby("Subcategory")["Amount (in $)"].sum().reset_index()
+	top_spending_cat = spending_by_cat.sort_values("Amount (in $)", ascending=False).iloc[0, 0]
+
+	## create a section with 2 columns
+	col1, col2 = st.columns(2)
+	## show all results from net gain on the left column
+	col1.write("On average, you:")
+	col1.write(f"* Earned ${avg_amt_earned:,.2f}/month")
+	col1.write(f"* Earned ${avg_amt_spent:,.2f}/month")
+	col1.write(f"* Spent {avg_percent_spent:.2f}% of your income per month")
+	## show all specifics from spending and income on the right
+	col2.write("You: ")
+	col2.write(f"* Earned a total of: ${total_earned:,.2f}, most of which was from {top_income_source.lower()}")
+	col2.write(f"* Spent a total of: ${total_spent:,.2f}, most of which was from {top_spending_cat.lower()}")
+	col2.write(f"* Saved a total of: ${total_saved:,.2f}, which was {percent_earned:.2f}% of what you earned!")
+
+	

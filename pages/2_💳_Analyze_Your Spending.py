@@ -5,7 +5,7 @@ import streamlit as st
 # import functions used to analyze the data
 import sys
 sys.path.append("code/")
-from analyze_spending import setup_data, monthly_net_gain, visualize_spending, analyze_income
+from analyze_spending import setup_data, monthly_net_gain, visualize_spending, analyze_income, sum_stats
 
 
 ### add title on main page
@@ -28,13 +28,17 @@ if file is not None:
 	col1, col2 = st.columns(2)
 	spending = visualize_spending(transactions, col1)
 	income = analyze_income(transactions, col2)
+
+	## add summary statistics
+	st.header("Summary Statistics")
+	sum_stats(transactions, net_gain, spending, income)
 	
 
 # or use example file to create dashbaord
 elif yes_demo: 
 	## use sample transactions file from GitHub
 	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv"
-	## read in as a dataframe
+		## read in as a dataframe
 	transactions = setup_data(url)
 
 	## create and show bar plots showing the monthly income and expenses and net gain
@@ -43,4 +47,7 @@ elif yes_demo:
 	col1, col2 = st.columns(2)
 	spending = visualize_spending(transactions, col1)
 	income = analyze_income(transactions, col2)
+
+	## add summary statistics
+	sum_stats(transactions, net_gain, spending, income)
 	
