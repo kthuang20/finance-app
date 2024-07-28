@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd
 
-### create a multiple pages
+### set the title of the page
 st.set_page_config(
 	page_title="Finance App",
 	page_icon="💰"
@@ -31,6 +31,7 @@ st.set_page_config(
 	2. In the Net Worth section, clicked *View details*
 	3. Selected the *Spending* tab
 	4. Scrolled down to the *All Transactions* section and clicked the *Download transactions* hyperlink
+	5. I manually removed the title of "Spending Transactions" and labels underneath the table in Excel
 
 	To download all my investment transactions, I:
 	1. Logged into my Fidelity account
