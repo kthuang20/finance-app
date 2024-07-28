@@ -15,7 +15,7 @@ This GitHub repository contains the following resources used to generate the fin
 
 * `code` folder consisting of:
 	* `analyze_spending.py` -- code used to generate each visualization used in the spending dashboard
-	* `analyze_investment.py` -- code used to generate each visualization of the investments dashboard
+	* `analyze_investments.py` -- code used to generate each visualization of the investments dashboard
 * `sample_data` folder containing:
 	* `InvestmentTransactions.csv` -- sample data file used to generate the investments dashboard
 	* `spending_transactions.csv` -- sample data file used to generate the spending dashboard
