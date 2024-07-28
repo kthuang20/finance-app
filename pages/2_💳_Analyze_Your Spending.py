@@ -7,8 +7,11 @@ import sys
 sys.path.append("code/")
 from analyze_spending import setup_data, monthly_net_gain, visualize_spending, analyze_income
 
+
 ### add title on main page
 st.title("Your Finances At A Glance")
+st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files that are formatted like the \
+[example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv)")
 
 ### allow user to upload their transactions to try demo in sidebar
 file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file", type=["csv", "xlsx"]) # upload file

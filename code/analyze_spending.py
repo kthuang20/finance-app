@@ -94,7 +94,7 @@ def visualize_spending(transactions, col):
 ### function to generate composition of income
 def analyze_income(transactions, col):
 	## select the data describing income
-	income = transactions[transactions["Transaction Type"] == "Income"]
+	income = transactions[transactions["Category"] == "Income"]
 
 	## create a pie chart describing how much of each type income the user 
 	fig = px.pie(income, values="Amount (in $)", names="Subcategory", title="Types of Income Earned")
