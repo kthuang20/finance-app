@@ -23,12 +23,21 @@ st.set_page_config(
 	Hence, this finance app was born.
 	
 	I have many of my accounts at Fidelity and through some fiddling around, I found a simple way to 
-	download transactions and investments across all accounts that doesn't cost money.
-	Here are the following steps I performed on my laptop:
-	1. Link all your accounts (internal and external) in Fidelity.
-	2. Under the Accounts & Trade tab, select *Full View*
-	3. To download all spending transactions, select *Spending → Transactions → Export Results*
-	4. To download all investment transactions, select *Investments → Transactions → Export Results*
+	download transactions and investments across all accounts that doesn't cost money. To do this, I 
+	first linked all my accounts (internal and external) in Fidelity.
+
+	To download all my spending transactions, I:
+	1. Logged into this website: https://digital.fidelity.com/ftgw/digital/plan-summary/summary
+	2. In the Net Worth section, clicked *View details*
+	3. Selected the *Spending* tab
+	4. Scrolled down to the *All Transactions* section and clicked the *Download transactions* hyperlink
+
+	To download all my investment transactions, I:
+	1. Logged into my Fidelity account
+	2. Selected *Accounts & Trade* → *Full View*
+	3. Selected the *Investments* tab → *Transactions*
+	4. Selected date range of interest
+	5. Clicked the *Export Results* button
 
 
 	### How To Use 
@@ -36,7 +45,7 @@ st.set_page_config(
 	Click on the sidebar to navigate to which analysis you would like to perform.
 
 	---
-	*Source code for this app is available at:* https://github.com/kthuang20/finance-app
+	*Source code and sample files used in this app is available at:* https://github.com/kthuang20/finance-app
 
 
 '''
