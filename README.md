@@ -5,7 +5,7 @@ investments. This app aims to help you understand your progress and guide you to
 
 Click the following link to learn more about the app and to use it: https://kthuang20-finance-app-1-overview-0k69n0.streamlit.app
 
-## Contents
+## Contents of this repository
 This GitHub repository contains the following resources used to generate the finance app:
 * `1_Overview.py` -- contents of the main page of the app, providing an overview of the app and the how to navigate it.
 * `requirements.txt` -- the necessary packges used to run the app
