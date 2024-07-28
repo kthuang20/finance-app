@@ -5,10 +5,12 @@ import streamlit as st
 # import functions used to analyze the data
 import sys
 sys.path.append("code/")
-# from analyze_investments import setup_data, monthly_net_gain, visualize_spending, analyze_income
+from analyze_investments import setup_data
 
 ### add title on main page
 st.title("Your Investments At A Glance")
+st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files that are formatted like the \
+[example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/InvestmentTransactions.csv)")
 
 ### allow user to upload their transactions to try demo in sidebar
 file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file", type=["csv", "xlsx"]) # upload file
@@ -18,7 +20,6 @@ yes_demo = st.sidebar.button("Example file") # try demo
 if file is not None:
 	## read in as a dataframe
 	transactions = setup_data(file)
-
 	
 
 # or use example file to create dashbaord
