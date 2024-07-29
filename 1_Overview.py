@@ -2,11 +2,15 @@
 import streamlit as st
 import pandas as pd
 
-### set the title of the page
+### configure settings of page
 st.set_page_config(
-	page_title="Finance App",
-	page_icon="💰"
-	)
+	page_title = "Finance App",
+	page_icon = "💰",
+	layout = "wide",
+	initial_sidebar_state = "expanded")
+
+### add name to sidebar
+st.sidebar.markdown("*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*")
 
 '''
 	# Finance App 💰
@@ -47,6 +51,4 @@ st.set_page_config(
 
 	---
 	*Source code and sample files used in this app is available at:* https://github.com/kthuang20/finance-app
-
-
 '''

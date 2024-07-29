@@ -7,6 +7,11 @@ import sys
 sys.path.append("code/")
 from analyze_spending import setup_data, monthly_net_gain, visualize_spending, analyze_income, sum_stats
 
+### configure settings of page
+st.set_page_config(
+	layout = "wide",
+	initial_sidebar_state = "expanded")
+
 ### add title on main page
 st.title("Your Finances At A Glance")
 st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files that are formatted like the \
@@ -15,6 +20,11 @@ st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files t
 ### allow user to upload their transactions to try demo in sidebar
 file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file", type=["csv", "xlsx"]) # upload file
 yes_demo = st.sidebar.button("Example file") # try demo
+
+### add credits to sidebar
+st.sidebar.markdown('''
+	---
+	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
 
 ### function to create dashboard
 def create_dashboard(transactions):
