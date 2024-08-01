@@ -55,7 +55,7 @@ def show_monthly_investments(investments):
 				   12: "December"}
 	## create a list of all the labels for the tabs, one for each ticker and last one for total
 	all_tickers = monthly_investments["Ticker"].unique().tolist()
-	tab_labels = all_tickers + ["Total Investments"]
+	tab_labels = all_tickers + ["All Investments"]
 
 	## create two tabs
 	tabs = st.tabs(tab_labels)
@@ -69,8 +69,8 @@ def show_monthly_investments(investments):
 			fig = px.bar(ticker_data, x="Month", y="Amount", 
 				 		 title = f"Monthly Investments Made For {ticker}")
 
-			# Update y-axis label
-	        # fig.update_layout(yaxis_title="Amount (in $)")
+			# update y-axis label
+			fig.update_layout(yaxis_title="Amount (in $)")
 
 			# replace the months with the month names
 			fig.update_xaxes(
@@ -81,7 +81,7 @@ def show_monthly_investments(investments):
 	        # show bar plot
 			st.plotly_chart(fig)
 
-	## for the last tab
+	## for the last tab,
 	with tabs[-1]:
 		# create a dataframe summarizing all the investments made per month
 		all_data = monthly_investments.groupby("Month")["Amount"].sum().reset_index()
@@ -90,8 +90,8 @@ def show_monthly_investments(investments):
 		fig = px.bar(all_data, x="Month", y="Amount", 
 				 	 title = f"Total Investments Made Per Month")
 
-		# Update y-axis label
-	    # fig.update_layout(yaxis_title="Amount (in $)")
+		# update y-axis label
+		fig.update_layout(yaxis_title="Amount (in $)")
 
 		# replace the months with the month names
 		fig.update_xaxes(
@@ -102,4 +102,21 @@ def show_monthly_investments(investments):
 	    # show bar plot
 		st.plotly_chart(fig)
 
-	return monthly_investments
+
+### function to show a pie chart describing the types of investments made
+def show_investment_types(investments, col):
+	## get the total investments made across all months for each ticker
+	ticker_totals = investments.groupby("Ticker")["Amount"].sum().reset_index()
+
+	## create and show a pie chart showing the 
+	fig = px.pie(ticker_totals, values="Amount", names="Ticker", title="Types of Investments Made")
+	col.plotly_chart(fig)
+
+### function to show a pie chart describing the types of investments made
+def show_dividends(dividends, col):
+	## get the total investments made across all months for each ticker
+	ticker_totals = dividends.groupby("Ticker")["Amount"].sum().reset_index()
+
+	## create and show a pie chart showing the 
+	fig = px.pie(ticker_totals, values="Amount", names="Ticker", title="Types of Dividends Made")
+	col.plotly_chart(fig)
