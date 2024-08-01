@@ -1,8 +1,8 @@
-# import necessary packages
+### import necessary packages
 import pandas as pd
 import streamlit as st
 
-# import functions used to analyze the data
+### import functions used to analyze the data
 import sys
 sys.path.append("code/")
 from analyze_spending import setup_data, monthly_net_gain, visualize_spending, analyze_income, sum_stats

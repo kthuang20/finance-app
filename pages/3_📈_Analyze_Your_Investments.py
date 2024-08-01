@@ -1,11 +1,11 @@
-# import necessary packages
+### import necessary packages
 import pandas as pd
 import streamlit as st
 
-# import functions used to analyze the data
+### import functions used to analyze the data
 import sys
 sys.path.append("code/")
-from analyze_investments import setup_data
+from analyze_investments import setup_data, show_monthly_investments
 
 ### configure settings of page
 st.set_page_config(
@@ -26,17 +26,25 @@ st.sidebar.markdown('''
 	--- 
 	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
 
-# if the user has uploaded their file, create dashboard using that file:
+### function to create dashboard
+# def create_dashboard(investments, dividends):
+	# with col2:
+	# show_monthly_investments(investments) 
+
+### if the user has uploaded their file, create dashboard using that file:
 if file is not None:
 	## read in as a dataframe
-	transactions = setup_data(file)
-	
+	investments, dividends = setup_data(file)
+	## create dashboard
+	# create_dashboard(investments, dividends)
 
-# or use example file to create dashbaord
+### or use example file to create dashbaord
 elif yes_demo: 
 	## use sample transactions file from GitHub
-	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/transactions_2024_07_27.csv"
+	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/InvestmentTransactions.csv"
 	## read in as a dataframe
-	transactions = setup_data(url)
-
+	investments, dividends = setup_data(url)
+	show_monthly_investments(investments)
+	## create dashboard
+	# create_dashboard(investments, dividends)
 	

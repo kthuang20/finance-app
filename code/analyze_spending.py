@@ -19,7 +19,7 @@ def setup_data(file):
 	transactions['Day'] = transactions['Date'].dt.day
 
 	## convert the amount into numerical values
-	transactions["Amount (in $)"] = pd.to_numeric(transactions["Amount (in $)"])
+	transactions["Amount (in $)"] = transactions["Amount (in $)"].astype(float)
 	## make sure that expenses are negative values
 	expenses = transactions.loc[transactions["Transaction Type"] == "Expense", "Amount (in $)"]
 	transactions.loc[transactions["Transaction Type"] == "Expense", "Amount (in $)"] = expenses.abs() * -1
@@ -41,7 +41,7 @@ def monthly_net_gain(transactions):
 	net_gain.columns = ["Year", "Month", "Total Income", "Total Expenses"]
 	net_gain.fillna(0, inplace=True)
 
-	## convert numerical months to their name of the month
+	## convert numerical months to the name of the month
 	month_names = {1: "January",
 				   2: "February",
 				   3: "March",

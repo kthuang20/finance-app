@@ -43,11 +43,20 @@ st.sidebar.markdown("*Created by [Katie Huang](https://kthuang20.github.io/Katie
 	3. Selected the *Investments* tab → *Transactions*
 	4. Selected date range of interest
 	5. Clicked the *Export Results* button
-
+	
 
 	### How To Use 
-	I have designed this finance app to your analyze yearly spending transactions and investments separately.
-	Click on the sidebar to navigate to which analysis you would like to perform.
+	I have designed this finance app to your analyze yearly spending transactions and investments separately. 
+	In attempts to make it safer, this app does not require you to sign into your bank account. Instead, it
+	allows you upload files with your spending and investments transactions up to a years worth of transactions.
+	Once you have uploaded your own file, it will automatically generate a dashboard analyzing your transactions.
+	Click on the sidebar on the left to navigate to which analysis you would like to perform. 
+
+	### Limitations
+	I created this app using data that I collected from Fidelity. This means that while the app allows the user 
+	to upload their file, the files would need to be structured like the example files. For Fidelity users,
+	they would need to perform the steps that I have described up above. For non-Fidelity users, they would
+	need to manually structure their data as the example files.
 
 	---
 	*Source code and sample files used in this app is available at:* https://github.com/kthuang20/finance-app
