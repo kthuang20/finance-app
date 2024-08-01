@@ -55,12 +55,33 @@ def show_monthly_investments(investments):
 				   12: "December"}
 	## create a list of all the labels for the tabs, one for each ticker and last one for total
 	all_tickers = monthly_investments["Ticker"].unique().tolist()
-	tab_labels = all_tickers + ["All Investments"]
+	tab_labels = ["All Investments"] + all_tickers
 
-	## create two tabs
+	## create tabs for all tickers + one combining all investments
 	tabs = st.tabs(tab_labels)
+
+	## for the last tab,
+	with tabs[0]:
+		# create a dataframe summarizing all the investments made per month
+		all_data = monthly_investments.groupby("Month")["Amount"].sum().reset_index()
+
+		# create a bar plot showing the total investments across all tickers
+		fig = px.bar(all_data, x="Month", y="Amount", 
+				 	 title = f"Total Investments Made Per Month")
+
+		# update y-axis label
+		fig.update_layout(yaxis_title="Amount (in $)")
+
+		# replace the months with the month names
+		fig.update_xaxes(
+            tickvals=list(month_names.keys()),  # Numeric month values
+            ticktext=[month_names[i] for i in month_names.keys()]  # Month names
+        )
+
+	    # show bar plot
+		st.plotly_chart(fig)
 	## for each ticker tabs
-	for ticker, tab in zip(all_tickers, tabs[:-1]): 
+	for ticker, tab in zip(all_tickers, tabs[1:]): 
 		# select the data for that ticker
 		ticker_data = monthly_investments[monthly_investments["Ticker"] == ticker]
 		
@@ -81,27 +102,6 @@ def show_monthly_investments(investments):
 	        # show bar plot
 			st.plotly_chart(fig)
 
-	## for the last tab,
-	with tabs[-1]:
-		# create a dataframe summarizing all the investments made per month
-		all_data = monthly_investments.groupby("Month")["Amount"].sum().reset_index()
-
-		# create a bar plot showing the total investments across all tickers
-		fig = px.bar(all_data, x="Month", y="Amount", 
-				 	 title = f"Total Investments Made Per Month")
-
-		# update y-axis label
-		fig.update_layout(yaxis_title="Amount (in $)")
-
-		# replace the months with the month names
-		fig.update_xaxes(
-            tickvals=list(month_names.keys()),  # Numeric month values
-            ticktext=[month_names[i] for i in month_names.keys()]  # Month names
-        )
-
-	    # show bar plot
-		st.plotly_chart(fig)
-
 
 ### function to show a pie chart describing the types of investments made
 def show_investment_types(investments, col):
@@ -118,5 +118,5 @@ def show_dividends(dividends, col):
 	ticker_totals = dividends.groupby("Ticker")["Amount"].sum().reset_index()
 
 	## create and show a pie chart showing the 
-	fig = px.pie(ticker_totals, values="Amount", names="Ticker", title="Types of Dividends Made")
+	fig = px.pie(ticker_totals, values="Amount", names="Ticker", title="Types of Dividends Earned")
 	col.plotly_chart(fig)
