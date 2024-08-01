@@ -5,7 +5,7 @@ import streamlit as st
 ### import functions used to analyze the data
 import sys
 sys.path.append("code/")
-from analyze_investments import setup_data, show_monthly_investments, show_investment_types, show_dividends
+from analyze_investments import setup_data, show_monthly_investments, show_investment_types, show_dividends, sum_stats
 
 ### configure settings of page
 st.set_page_config(
@@ -36,6 +36,8 @@ def create_dashboard(investments, dividends):
 	show_investment_types(investments, col1)
 	## generate a pie chart showing the dividends earned made on right column
 	show_dividends(dividends, col2)
+	## generate summary statistics
+	sum_stats(investments, dividends)
 
 ### if the user has uploaded their file, create dashboard using that file:
 if file is not None:

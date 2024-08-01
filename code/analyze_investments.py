@@ -80,7 +80,8 @@ def show_monthly_investments(investments):
 
 	    # show bar plot
 		st.plotly_chart(fig)
-	## for each ticker tabs
+
+	## for each of the other remaining ticker tabs,
 	for ticker, tab in zip(all_tickers, tabs[1:]): 
 		# select the data for that ticker
 		ticker_data = monthly_investments[monthly_investments["Ticker"] == ticker]
@@ -120,3 +121,33 @@ def show_dividends(dividends, col):
 	## create and show a pie chart showing the 
 	fig = px.pie(ticker_totals, values="Amount", names="Ticker", title="Types of Dividends Earned")
 	col.plotly_chart(fig)
+
+
+### function to generate the summary statistics
+def sum_stats(investments, dividends):
+	## calculate the total amount invested and total dividends earned
+	total_invested = investments["Amount"].sum()
+	total_dividends = dividends["Amount"].sum()
+
+	## find the ticker the user invested in the most
+	ticker_investments = investments.groupby("Ticker")["Amount"].sum().reset_index()
+	highest_ticker_invested = ticker_investments.sort_values("Amount", ascending=False).iloc[0, 0]
+	## calculate percent of all investments this ticker was made up of
+	highest_investment = ticker_investments.sort_values("Amount", ascending=False).iloc[0, 1]
+	percent_invested = highest_investment/float(total_invested) * 100
+
+	## find the ticker that earned the most amount of dividends
+	ticker_dividends = dividends.groupby("Ticker")["Amount"].sum().reset_index()
+	highest_ticker_dividend = ticker_dividends.sort_values("Amount", ascending=False).iloc[0, 0]
+	## calculate percent of all dividends this ticker's was made up of
+	highest_dividend = ticker_dividends.sort_values("Amount", ascending=False).iloc[0, 1]
+	percent_dividend = highest_dividend/float(total_dividends) * 100
+
+
+	## show user the results
+	st.header("Summary Statistics")
+	st.write("You:")
+	st.write(f"* Invested a total of ${total_invested:,.2f}, \
+		with {highest_ticker_invested} making up {percent_invested:.2f}% of your total investments")
+	st.write(f"* Earned a total of ${total_dividends:,.2f} in dividends, \
+		with {highest_ticker_dividend} making up {percent_dividend:.2f}% of your total dividends")
