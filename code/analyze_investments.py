@@ -40,7 +40,7 @@ def show_monthly_investments(investments):
 	## create a dataframe with the total amount invested in ticker for each month
 	monthly_investments = investments.groupby(["Month", "Ticker"])["Amount"].sum().reset_index()
 
-	## add a column with the month names
+	## create a dictionary with the names of the months
 	month_names = {1: "January",
 				   2: "February",
 				   3: "March",
@@ -53,6 +53,7 @@ def show_monthly_investments(investments):
 				   10: "October",
 				   11: "November",
 				   12: "December"}
+
 	## create a list of all the labels for the tabs, one for each ticker and last one for total
 	all_tickers = monthly_investments["Ticker"].unique().tolist()
 	tab_labels = ["All Investments"] + all_tickers

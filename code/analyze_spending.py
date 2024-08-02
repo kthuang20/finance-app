@@ -41,7 +41,7 @@ def monthly_net_gain(transactions):
 	net_gain.columns = ["Year", "Month", "Total Income", "Total Expenses"]
 	net_gain.fillna(0, inplace=True)
 
-	## convert numerical months to the name of the month
+	## add a column with the name of the month
 	month_names = {1: "January",
 				   2: "February",
 				   3: "March",
@@ -54,7 +54,7 @@ def monthly_net_gain(transactions):
 				   10: "October",
 				   11: "November",
 				   12: "December"}
-	net_gain["Month Names"] = net_gain["Month"].map(month_names)
+	net_gain["Month Name"] = net_gain["Month"].map(month_names)
 
 	## include a column describing the net gain
 	net_gain["Net Gain"] = net_gain["Total Income"] - net_gain["Total Expenses"]
