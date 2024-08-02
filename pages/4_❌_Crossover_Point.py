@@ -41,7 +41,7 @@ def create_dashboard(spending_file, investments_file):
 	gen_sum(monthly_expenses, monthly_investments)
 
 ### add title to main page
-st.title("Crossover Point Update")
+st.title("Crossover Point")
 
 ### if the user uploaded their own files,
 if spending_file is not None and investments_file is not None:
