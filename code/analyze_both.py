@@ -65,6 +65,19 @@ def setup_data(spending_file, investments_file):
 
 	return monthly_expenses, monthly_investments
 
+### create a dictionary with the month names
+month_names = {1: "January",
+			   2: "February",
+			   3: "March",
+			   4: "April",
+			   5: "May",
+			   6: "June",
+			   7: "July",
+			   8: "August",
+			   9: "September",
+			   10: "October",
+			   11: "November",
+			   12: "December"}
 
 ### function to create a line plot tracking the monthly investments and expenses
 def show_crossover(monthly_expenses, monthly_investments):
@@ -79,6 +92,12 @@ def show_crossover(monthly_expenses, monthly_investments):
 				  y = "Amount (in $)",
 				  color = "Type",
 				  markers = True)
+
+	# replace the months with the month names
+	fig.update_xaxes(
+        tickvals=list(month_names.keys()),  # Numeric month values
+        ticktext=[month_names[i] for i in month_names.keys()]  # Month names
+        )
 	## show line plot
 	st.plotly_chart(fig)
 
@@ -91,20 +110,7 @@ def gen_sum(monthly_expenses, monthly_investments):
 						on="Month", how="outer", suffixes=("_expenses", "_investments"))
 	## fill NAs with 0
 	all_data.fillna(0, inplace=True)
-
-	## add a column with name of the month
-	month_names = {1: "January",
-				   2: "February",
-				   3: "March",
-				   4: "April",
-				   5: "May",
-				   6: "June",
-				   7: "July",
-				   8: "August",
-				   9: "September",
-				   10: "October",
-				   11: "November",
-				   12: "December"}
+	## add a column with the names of the month
 	all_data["Month Name"] = all_data["Month"].map(month_names)
 
 	## add a column stating whether they've reached crosspoint for each month

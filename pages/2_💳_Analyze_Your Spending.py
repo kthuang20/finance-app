@@ -18,7 +18,7 @@ st.sidebar.markdown("***Note:*** This analysis only works with .csv files that a
 [example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv)")
 
 ### allow user to upload their transactions to try demo in sidebar
-file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file:", type=".csv") # upload file
+file = st.sidebar.file_uploader(label="Upload your spending transactions:", type=".csv") # upload file
 try_demo = st.sidebar.button("Example")
 
 ### add credits to sidebar
