@@ -44,9 +44,11 @@ st.sidebar.markdown("*Created by [Katie Huang](https://kthuang20.github.io/Katie
 
 	### How To Use 
 	This app allows you to analyze yearly spending transactions and investments separately without requiring 
-	you to sign into your bank account. Simply upload files with your spending and investment transactions, 
-	covering up to a year's worth of data. The app will automatically generate a dashboard to analyze your 
-	transactions. Use the sidebar on the left to navigate to the desired analysis.
+	you to sign into your bank account. For those who are interested in obtaining financial freedom, it
+	also tracks your progress towards reaching your crossover point (*the point at which your passive investment
+	income surpasses your living expenses*). All analyses work up to a year's worth of data. To perform these 
+	analyses, simply navigate to the desired analysis on the sidebar and upload your spending and/or 
+	investment transactions. To see what analyses are performed, click on the example button.
 
 	### Limitations
 	The app was developed using data collected from Fidelity. While users can upload their own files, the 

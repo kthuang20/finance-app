@@ -24,7 +24,7 @@ with st.sidebar:
 	investments_file = st.file_uploader("Upload your investment transactions here:", type=".csv")
 
 	## add a button to allow user to try example files
-	try_demo = st.button("Example files")
+	try_demo = st.button("Example")
 
 	### add credits to sidebar
 	st.markdown('''

@@ -61,15 +61,15 @@ def monthly_net_gain(transactions):
 
 
 	## create a bar plot showing the monthly income and expenses
-	fig1 = px.bar(net_gain, x="Month Names", y=["Total Income", "Total Expenses"],
+	fig1 = px.bar(net_gain, x="Month Name", y=["Total Income", "Total Expenses"],
 				 title = "Monthly Income and Expenses",
-				 labels={"Month Names": "Month", "value": "Amount", "variable": "Type"})
+				 labels={"Month Name": "Month", "value": "Amount", "variable": "Type"})
 	fig1.update_layout(yaxis_title = "Amount (in $)")
 
 	## create line plot tracking the net gain
-	fig2 = px.bar(net_gain, x="Month Names", y="Net Gain",
+	fig2 = px.bar(net_gain, x="Month Name", y="Net Gain",
 				   title = "Net Gain",
-				   labels={"Month Names": "Month"})
+				   labels={"Month Name": "Month"})
 
 	## create a container separated by tabs to show results to user
 	tab1, tab2 = st.tabs(["Monthly Income and Expenses", "Net Gain"])
