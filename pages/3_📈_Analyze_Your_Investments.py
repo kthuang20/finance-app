@@ -21,13 +21,15 @@ st.sidebar.markdown("***Note:*** This analysis only works with .csv files that a
 file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file:", type=".csv") # upload file
 try_demo = st.sidebar.button("Example file") # try demo
 
-### add name to sidebar
+### add credits to sidebar
 st.sidebar.markdown('''
 	--- 
 	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
 
 ### function to create dashboard
-def create_dashboard(investments, dividends):
+def create_dashboard(file):
+	## setup the data
+	investments, dividends = setup_data(file)
 	## generate bar plots showing the investments made each month
 	show_monthly_investments(investments) 
 	## create two columns
@@ -41,17 +43,13 @@ def create_dashboard(investments, dividends):
 
 ### if the user has uploaded their file, create dashboard using that file:
 if file is not None:
-	## read in as a dataframe
-	investments, dividends = setup_data(file)
 	## create dashboard
-	create_dashboard(investments, dividends)
+	create_dashboard(file)
 
 ### or use example file to create dashbaord
 elif try_demo: 
 	## use sample transactions file from GitHub
 	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/InvestmentTransactions.csv"
-	## read in as a dataframe
-	investments, dividends = setup_data(url)
 	## create dashboard
-	create_dashboard(investments, dividends)
+	create_dashboard(url)
 	

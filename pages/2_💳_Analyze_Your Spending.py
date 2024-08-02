@@ -19,7 +19,7 @@ st.sidebar.markdown("***Note:*** This analysis only works with .csv files that a
 
 ### allow user to upload their transactions to try demo in sidebar
 file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file:", type=".csv") # upload file
-yes_demo = st.sidebar.button("Example file") # try demo
+try_demo = st.sidebar.button("Example file") # try demo
 
 ### add credits to sidebar
 st.sidebar.markdown('''
@@ -27,31 +27,29 @@ st.sidebar.markdown('''
 	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
 
 ### function to create dashboard
-def create_dashboard(transactions):
-    ## create and show bar plots showing the monthly income and expenses and net gain
-    net_gain = monthly_net_gain(transactions)
-    ## create a section with two columns
-    col1, col2 = st.columns(2)
-    ## show a pie chart describing spending categories on the left column
-    spending = visualize_spending(transactions, col1)
-    ## show a pie chart describing sources of income on the right column
-    income = analyze_income(transactions, col2)
-    ## add summary statistics
-    sum_stats(transactions, net_gain, spending, income)
+def create_dashboard(file):
+	## setup the data
+	transactions = setup_data(file)
+	## create and show bar plots showing the monthly income and expenses and net gain
+	net_gain = monthly_net_gain(transactions)
+	## create a section with two columns
+	col1, col2 = st.columns(2)
+	## show a pie chart describing spending categories on the left column
+	spending = visualize_spending(transactions, col1)
+	## show a pie chart describing sources of income on the right column
+	income = analyze_income(transactions, col2)
+	## add summary statistics
+	sum_stats(transactions, net_gain, spending, income)
 
 ### if the user has uploaded their file, create dashboard using that file:
 if file is not None:
-	## read in as a dataframe
-	transactions = setup_data(file)
 	## show contents of dashboard
-	create_dashboard(transactions)
+	create_dashboard(file)
 
 ### or use example file to create dashbaord
-elif yes_demo: 
+elif try_demo: 
 	## use sample transactions file from GitHub
 	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv"
-	## read in as a dataframe
-	transactions = setup_data(url)
 	## show contents of dashboard
-	create_dashboard(transactions)
+	create_dashboard(url)
 	
