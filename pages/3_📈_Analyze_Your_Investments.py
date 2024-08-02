@@ -2,7 +2,7 @@
 import pandas as pd
 import streamlit as st
 
-### import functions used to analyze the data
+### import self written functions used to analyze the data
 import sys
 sys.path.append("code/")
 from analyze_investments import setup_data, show_monthly_investments, show_investment_types, show_dividends, sum_stats
@@ -14,12 +14,12 @@ st.set_page_config(
 
 ### add title on main page
 st.title("Your Investments At A Glance")
-st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files that are formatted like the \
+st.sidebar.markdown("***Note:*** This analysis only works with .csv files that are formatted like the \
 [example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/InvestmentTransactions.csv)")
 
 ### allow user to upload their transactions to try demo in sidebar
-file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file", type=["csv", "xlsx"]) # upload file
-yes_demo = st.sidebar.button("Example file") # try demo
+file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file:", type=".csv") # upload file
+try_demo = st.sidebar.button("Example file") # try demo
 
 ### add name to sidebar
 st.sidebar.markdown('''
@@ -47,7 +47,7 @@ if file is not None:
 	create_dashboard(investments, dividends)
 
 ### or use example file to create dashbaord
-elif yes_demo: 
+elif try_demo: 
 	## use sample transactions file from GitHub
 	url = "https://github.com/kthuang20/finance-app/raw/main/sample_data/InvestmentTransactions.csv"
 	## read in as a dataframe

@@ -14,11 +14,11 @@ st.set_page_config(
 
 ### add title on main page
 st.title("Your Finances At A Glance")
-st.sidebar.markdown("***Note:*** This app only works with .csv and .xlsx files that are formatted like the \
+st.sidebar.markdown("***Note:*** This analysis only works with .csv files that are formatted like the \
 [example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv)")
 
 ### allow user to upload their transactions to try demo in sidebar
-file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file", type=["csv", "xlsx"]) # upload file
+file = st.sidebar.file_uploader(label="Upload your transactions or demo using the example file:", type=".csv") # upload file
 yes_demo = st.sidebar.button("Example file") # try demo
 
 ### add credits to sidebar
