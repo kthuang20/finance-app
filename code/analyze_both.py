@@ -2,7 +2,6 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-import plost
 
 ### import self written functions used to analyze the data
 import sys
