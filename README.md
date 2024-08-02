@@ -12,10 +12,12 @@ This GitHub repository contains the following resources used to generate the fin
 * `pages` folder consisting:
 	* `2_💳_Analyze_Your Spending.py` -- code used to generate the dashboard analyzing user's spending
 	* `3_📈_Analyze_Your_Investments.py` -- code used to generate the dashboard analyzing user's investments
+	* `4_❌_Crossover_Point.py` -- code used to generate the dashboard to analyze whether user reached the crosspoint 
 
 * `code` folder consisting of:
-	* `analyze_spending.py` -- code used to generate each visualization used in the spending dashboard
-	* `analyze_investments.py` -- code used to generate each visualization of the investments dashboard
+	* `analyze_spending.py` -- code used to generate each component of spending dashboard
+	* `analyze_investments.py` -- code used to generate each component of the investments dashboard
+	* `analyze_both.py` -- code used to generate each component of the crossover point dashboard
 * `sample_data` folder containing:
 	* `InvestmentTransactions.csv` -- sample data file used to generate the investments dashboard
 	* `spending_transactions.csv` -- sample data file used to generate the spending dashboard
