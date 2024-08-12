@@ -15,7 +15,7 @@ st.set_page_config(
 ### add title on main page
 st.title("Your Finances At A Glance")
 st.sidebar.markdown("***Note:*** This analysis only works with .csv files that are formatted like the \
-[example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv)")
+[example file](https://github.com/kthuang20/finance-app/raw/main/sample_data/spending_transactions.csv).")
 
 ### allow user to upload their transactions to try demo in sidebar
 file = st.sidebar.file_uploader(label="Upload your spending transactions:", type=".csv") # upload file
@@ -24,7 +24,7 @@ try_demo = st.sidebar.button("Example")
 ### add credits to sidebar
 st.sidebar.markdown('''
 	---
-	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
+	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/about/)*''')
 
 ### function to create dashboard
 def create_dashboard(file):

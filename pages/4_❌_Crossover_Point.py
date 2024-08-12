@@ -29,7 +29,7 @@ with st.sidebar:
 	### add credits to sidebar
 	st.markdown('''
 		--- 
-		*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
+		*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/about/)*''')
 
 ### function to create the dashbaord
 def create_dashboard(spending_file, investments_file):

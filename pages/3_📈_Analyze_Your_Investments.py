@@ -24,7 +24,7 @@ try_demo = st.sidebar.button("Example") # try demo
 ### add credits to sidebar
 st.sidebar.markdown('''
 	--- 
-	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/)*''')
+	*Created by [Katie Huang](https://kthuang20.github.io/Katie_Portfolio/about/)*''')
 
 ### function to create dashboard
 def create_dashboard(file):
